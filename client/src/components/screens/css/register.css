@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=Gantari:wght@100;200;300;400;600&display=swap');
+
+body{
+    background: #141E30;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #243B55, #141E30);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #243B55, #141E30); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+    
+    font-family: 'Gantari', sans-serif;
+    align-items: center;
+    text-align: center;
+}
+
+.one-c{
+    /* border: 1px solid red; */
+    width: 60vw;
+    /* height: 200vh; */
+    margin: auto;
+}
+.two-c{
+    /* border: 1px solid blue; */
+    width: 54%;
+    margin:auto;
+    margin-top: 100px;
+    height: 430px;
+}
+
+.three-c{
+    width: 100%;
+    /* border: 2px solid green; */
+    height: 100%;
+    /* background-color: white; */
+    border-radius: 22px;
+}
+
+.title{
+ /* border: 1px solid green; */
+ height: 25%;
+ width:100%;
+ background-color: rgb(30, 137, 137); 
+ border-radius: 15px 15px 0 0 ;
+
+}
+.title-one{
+    /* border:1px solid red; */
+    margin: 0;
+    margin-top: 18px;
+    display: inline-block;
+    font-size: 50px;
+    color:white
+}
+.name{
+    /* border: 1px solid skyblue; */
+    height: 20%;
+    width:100%;
+}
+.email{
+    /* border: 1px solid red; */
+    height: 20%;
+    width:100%;
+}
+.password{
+    /* border: 1px solid yellowgreen; */
+    height: 20%;
+    width:100%;
+}
+.submit-section{
+    height: 15%;
+    width:100%;
+    background-color:rgb(30, 137, 137) ;
+    border-radius: 0 0 15px 15px;
+}
+
+.flexer{
+    /* border:2px solid seagreen; */
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+.flexer-one{
+    /* border:1px solid plum; */
+    background-color: rgb(30, 137, 137);
+    width:30%;
+    height:100%;
+    color: white;
+}
+.flexer-two{
+    /* border:1px solid palevioletred; */
+    width:70%;
+    height:100%;
+    /* background-color: rgb(46, 32, 56); */
+}
+
+.input-control{
+    font-family: 'Gantari', sans-serif;
+    margin-top: 27px;
+    height: 36px;
+    width: 70%;
+    text-align: center;
+    border-radius: 7px;
+    border: 1px solid black;
+    font-size: 15px;
+}
+
+
+
+.conner{
+    margin: 0;
+    font-family: 'Gantari', sans-serif;
+    margin-top: 15px;
+    display: inline-block;
+    font-size: 19px;
+    margin-top: 35px;
+}
+
+.newer{
+    border-radius: 22px 0 0 0;
+}
+
+.submit-button{
+    margin-top: 20px;
+    width: 39%;
+    height: 53%;
+    border-radius: 7px;
+    font-size: 16px;
+    border:1px solid white,
+    
+}
+.submit-button:hover{
+    background: #141E30;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #243B55, #141E30);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #243B55, #141E30); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+    cursor:pointer;
+    color:white    
+}
+
+.linkerman{
+    text-decoration: none;
+    color :red
+    /* color :rgb(30, 137, 137) */
+}
+
+@media (max-width:600px){
+    .one-c{
+        width: 100vw;
+        margin-top: 0;
+    }
+    .two-c{
+        width: 80%;
+    }
+}

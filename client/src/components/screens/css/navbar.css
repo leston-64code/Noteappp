@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Gantari:wght@100;200;300;400;500&display=swap');
+body{
+    /* height: 100vh; */
+    margin: 0;
+    
+}
+.none{
+    width: 100%;
+    height: 15%;
+    /* border: 2px solid red; */
+    margin: 0;
+    background-color: rgb(30, 137, 137); 
+    color:white
+}
+.nflexer{
+    /* border: 1px solid green; */
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+.ncommon{
+    width: 50%;
+    height: 100%;
+   
+}
+.nflex1{
+    text-align: center;
+    align-items: center;
+    /* border: 2px soild black; */
+    display: flex;
+}
+.nflex2{
+    /* border: 2px soild red; */
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: flex-end;
+}
+.bigicon{
+    font-size: 49px;
+    margin: 2px 0 2px 2px;
+    display: inline-block;
+}
+
+.nflex1-one{
+    margin: 0;
+    /* border: 1px solid red; */
+    height: 100%;
+    display: inline-block;
+    width: 30%;
+    /* background-color: aqua; */
+}
+.nflex1-two{
+    margin: 0;
+  /* border:1px solid red; */
+  height: 100%;
+  display: inline-block;
+  width: 10%;
+  /* background-color: plum */
+}
+.nflex1-three{
+    margin: 0;
+    /* border:1px solid red; */
+    height: 100%;
+    display: inline-block;
+    width: 20%;
+    /* background-color: cornflowerblue */
+}
+
+.nflex1-one-p{
+    display:inline-block;
+    margin: 0;
+}
+
+.commonp{
+    font-family: 'Gantari', sans-serif;
+    /* margin-right: 63%; */
+    font-size: 19px;
+    /* margin-bottom: 14px; */
+    display: inline-block;
+}
+.nflex2-one{
+    /* background-color: blueviolet; */
+    width: 7%;
+    height: 100%;
+}
+.nflex2-two{
+ /* background-color: wheat; */
+ width: 30%;
+    height: 100%;
+}
+.nflex2-three{
+/* background-color: yellowgreen; */
+width: 30%;
+    height: 100%;
+}
+.nflex2-three i{
+    display: inline-block;
+    font-size: 30px;
+    margin: 0;
+    padding: 0;
+    margin-top: -3px;
+}
+
+.nflex2-three-p{
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    margin-left :5px;
+    font-family: 'Gantari', sans-serif;
+}
+.helloclass:hover{
+    cursor :pointer;
+    /* color:red; */
+    font-weight: 400;
+    text-decoration: underline;
+    
+}
+
+.bigicon:hover{
+    cursor: pointer;
+}
