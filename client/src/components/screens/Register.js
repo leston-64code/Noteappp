@@ -19,35 +19,7 @@ const Register = ({ history }) => {
   async function registerHandler(e) {
     e.preventDefault();
 
-    // const config={
-    //     header:{
-    //         "Content-Type":"application/json"
-    //     }
-    // }
-
-    // if (password!==confirmPassword){
-    //     setPassword("")
-    //     setConfirmPassword("")
-    //     setTimeout(()=>{
-    //         setError("")
-    //     },5000)
-    //     return setError("Passowrds do not match")
-    // }
-
-    // try {
-    //     const {data}=await axios.post("/api/auth/register",{username,email,password},config)
-
-    //     localStorage.setItem("authToken",data.token)
-
-    //     history.push("/")
-    // } catch (error) {
-    //     setError(error.response.data.error)
-    //     setTimeout(()=>{
-    //     setError("")
-    //     },5000)
-    // }
-
-    await fetch("/api/auth/register", {
+       await fetch("/api/auth/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

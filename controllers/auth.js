@@ -110,6 +110,16 @@ exports.resetpassword =async (req, res, next) => {
   }
 };
 
+exports.getuser=async (req,res,next)=>{
+  const id=req.userid
+  return res.json({
+    success:"true",
+    message:"I got the jwt data",
+    newer:id
+  })
+}
+
+
 const sendToken = async (user, statusCode, res) => {
   const token = user.getSignedToken();
   res.status(statusCode).json({

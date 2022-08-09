@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import "./css/login.css";
-// import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
@@ -16,25 +15,6 @@ const Login = () => {
 
   async function loginHandler(e) {
     e.preventDefault();
-
-    // const config={
-    //     header:{
-    //         "Content-Type":"application/json"
-    //     }
-    // }
-
-    // try {
-    //     const {data}=await axios.post("/api/auth/login",{email,password},config)
-
-    //     localStorage.setItem("authToken",data.token)
-
-    //     history.push("/")
-    // } catch (error) {
-    //     setError(error.response.data.error)
-    //     setTimeout(()=>{
-    //     setError("")
-    //     },5000)
-    // }
 
     await fetch("/api/auth/login", {
       method: "POST",
