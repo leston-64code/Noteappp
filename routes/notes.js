@@ -3,7 +3,7 @@ const router=express.Router()
 
 const {addnote,getallnotes,updatenote,deletenote}=require("../controllers/notes")
 
-router.route("/addnote/:userID").post(addnote)
+router.route("/addnote").post(addnote)
 
 
 router.route("/getallnotes").post(getallnotes)
