@@ -9,7 +9,7 @@ exports.deleteNote=(getid)=>{
     }).then((res)=>{
         return res.json()
     }).then((data)=>{
-        console.log(data)
+        // console.log(data)
         
     }).catch((error)=>{
         console.log(error)
@@ -42,4 +42,27 @@ exports.getallnotes=(req,res,next)=>{
             console.log(error);
           });
       }, 1000);
+}
+
+exports.addnote=async (title,des,tag)=>{
+    const userID=localStorage.getItem("userID")
+    console.log(title,des,tag)
+   await fetch("/api/notes/addnote",{
+        method:"POST",
+        headers:{
+            "Content-Type":"application/json",
+            "userID":userID
+        },
+        body:await JSON.stringify({
+            title:title,
+            description:des,
+            tag:tag
+        })
+    }).then((res)=>{
+        return res.json()
+    }).then((data)=>{
+        console.log(data)
+    }).catch((error)=>{
+        console.log(error)
+    })
 }
