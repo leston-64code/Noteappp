@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Gantari:wght@100;200;300;400;500&display=swap');
+
+
+body{
+    background: #141E30;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #243B55, #141E30);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #243B55, #141E30); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+
+.cone{
+    border:2px solid red;
+    
+}
+
+.ctwo{
+    /* border: 2px solid white; */
+    display: inline-block;
+    background-color:white;
+    width: 23%;
+    padding:0.7%;
+    border-radius: 11px;
+    height: 0%;
+    margin:25px;
+    flex-direction: column;
+}
+.three{
+    text-align: center;
+}
+.ctwo-card-header{
+    display: inline-block;
+    margin: 0;
+    font-size:26px;
+    font-family: 'Gantari', sans-serif;
+    
+    
+}
+
+.p-one-ctwo{
+    display: inline-block;
+    margin-top: 0%;
+    font-family: 'Gantari', sans-serif;
+    text-align: center;
+    margin-bottom: 0%;
+}
+
+.p-two-ctwo{
+    font-family: 'Gantari', sans-serif;
+    display: inline-block;
+    margin: 0;
+    font-weight: 300;
+}
+
+.fonticon{
+    /* border: 1px solid red; */
+    border-radius: 37px;
+    display: inline-block;
+    font-size: 22px;
+    padding:2%;
+    margin:0;
+    margin-left: 5%;
+}
+
+.fonticon:hover{
+    background-color: black;
+    color:white
+}
+
+@media (max-width:600px){
+    
+    .ctwo{
+        width: 100%;
+        margin: 2%;
+    }
+}
