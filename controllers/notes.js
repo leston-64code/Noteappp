@@ -4,7 +4,13 @@ const ErrorResponse = require("../utils/errorResponse");
 exports.addnote=async(req,res,next)=>{
     const {title,description,tag}=req.body
    try {
+    if(!title ||!description){
+        return next(new ErrorResponse("Please enter title or description",404))
+    }
     const user=req.header("userID")
+    if(!user){
+        return next(new ErrorResponse("Please login if you are not logged in",44))
+    }
     const note=await Notes.create({
        user, title,description,tag
     })
@@ -16,24 +22,18 @@ exports.addnote=async(req,res,next)=>{
     }
 
    } catch (error) {
-    next(error)
+   return  next(error)
    }
 }
 exports.getallnotes=async(req,res,next)=>{
     try {
-        const userID=req.header("userID")
-        if(userID==undefined){
-            return res.status(404).json({
-                success:false,
-                message:"Please login to get your notes"
-            })
+        const userID=await req.header("userID")
+        if(userID==undefined || !userID){
+            return next(new ErrorResponse("Please login to get your notes",404))
         }
         const notes=await Notes.find({user:userID})
         if(!notes){
-            return res.status(404).json({
-               success:false,
-               message:"No notes found"
-            })
+            return next(new ErrorResponse("Notes not found ",404))
           }        
 
        if(notes){
