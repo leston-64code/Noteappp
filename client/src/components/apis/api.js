@@ -15,3 +15,31 @@ exports.deleteNote=(getid)=>{
         console.log(error)
     })
 }
+
+exports.getallnotes=(req,res,next)=>{
+    // const userID=userID
+    setTimeout(() => {
+        const userID = localStorage.getItem("userID");
+        console.log("my poas", userID);
+        fetch("/api/notes/getallnotes", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            userID: userID,
+          },
+        })
+          .then((res) => {
+            return res.json();
+          })
+          .then((output) => {
+            console.log(output);
+            // setNotesarr(output.notes);
+            if(output){
+                return output
+            }
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }, 1000);
+}
