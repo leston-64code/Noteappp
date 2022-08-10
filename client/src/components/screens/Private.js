@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./css/card.css";
+import {deleteNote} from "../apis/api"
 const Private = () => {
   const [notesarr, setNotesarr] = useState([]);
   const navigate = useNavigate();
@@ -66,7 +67,7 @@ const Private = () => {
   return (
     <div>
       <h1 style={{ color: "red" }}>
-        Hello this is private route You are good boy
+        Welcome to your dashborard
       </h1>
       <br />
       <br />
@@ -75,21 +76,23 @@ const Private = () => {
         className="cardmainer"
         style={{
           display: "flex",
-          "flex-wrap": "wrap",
+          "flexWrap": "wrap",
           justifyContent: "space-evenly",
           width: "70vw",
           margin: "auto",
         }}
       >
-        {notesarr.map((value, index) => {
+        {notesarr.reverse().map((value, index) => {
           return (
-            <div className="ctwo" key={index}>
+            <div className="ctwo" key={value._id}>
               <div className="three">
                 <p className="ctwo-card-header">{value.title}</p>
               </div>
               <p className=" p-one-ctwo">{value.description}</p>
               <p className="p-two-ctwo">{value.date}</p>
-              <i className="fa-solid fa-trash-can fonticon "></i>
+              <i className="fa-solid fa-trash-can fonticon " onClick={()=>{
+                deleteNote(value._id)
+              }}></i>
               <i className="fa-solid fa-file-pen fonticon"></i>
             </div>
           );
