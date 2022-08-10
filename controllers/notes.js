@@ -1,5 +1,5 @@
 const Notes=require("../models/Notes")
-
+const ErrorResponse = require("../utils/errorResponse");
 
 exports.addnote=async(req,res,next)=>{
     const {title,description,tag}=req.body
@@ -113,5 +113,28 @@ exports.deletenote=async(req,res,next)=>{
     }
 }
 exports.updatenote=async(req,res,next)=>{
-
+    const {title,description,tag}=req.body
+    try {
+        if(!title && !description){
+            return next(new ErrorResponse("Please enter title or description ",404))
+        }
+        if(title&&description){
+            let newerNote={
+                title,description,tag
+            }
+            let noteID=await req.header("noteID")
+            if(!noteID){
+                return next(new ErrorResponse("Please select a valid note to delete",404))
+            }
+           if(noteID){
+            let note=await  Notes.findByIdAndUpdate(noteID,{$set:newerNote},{new:true})
+            return res.status(200).json({
+                success:true,
+                note
+            })
+           }
+        }
+    } catch (error) {
+       return next(error)
+    }
 }

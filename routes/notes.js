@@ -12,7 +12,7 @@ router.route("/getallnotes").post(getallnotes)
 router.route("/deleteallnotes").post(deleteallnotes)
 
 
-router.route("/updatenote").post(updatenote)
+router.route("/updatenote").put(updatenote)
 
 
 router.route("/deletenote").delete(deletenote)
