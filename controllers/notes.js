@@ -86,7 +86,31 @@ exports.deleteallnotes=async(req,res,next)=>{
     
 }
 exports.deletenote=async(req,res,next)=>{
-
+   
+    try {
+        const noteID=req.header("noteID")
+        if(!noteID){
+            res.status(404).json({
+                success:true,
+                message:"Valid note ID note found"
+            })
+        }
+        const deletedNote=await Notes.findByIdAndDelete(noteID)
+        if(!deletedNote){
+            res.status(404).json({
+                success:false,
+                message:"Please selete a valid note"
+            })
+        }
+        if(deletedNote){
+            res.status(200).json({
+                success:true,
+                deletedNote
+            })
+        }
+    } catch (error) {
+        next(error)
+    }
 }
 exports.updatenote=async(req,res,next)=>{
 

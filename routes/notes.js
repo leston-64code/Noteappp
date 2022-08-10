@@ -15,6 +15,6 @@ router.route("/deleteallnotes").post(deleteallnotes)
 router.route("/updatenote").post(updatenote)
 
 
-router.route("/deletenote").post(deletenote)
+router.route("/deletenote").delete(deletenote)
 
 module.exports=router
