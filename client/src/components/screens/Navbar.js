@@ -4,6 +4,11 @@ import {useNavigate} from "react-router-dom"
 
 const Navbar = () => {
     const navigate=useNavigate()
+    function navloghandler(){
+        localStorage.removeItem("authToken")
+        localStorage.removeItem("userID")
+        navigate("/login")
+    }
   return (
     <div className="none">
         <div className="nflexer">
@@ -26,9 +31,17 @@ const Navbar = () => {
             </div>
             <div className="nflex2 ncommon">
                 <div className="nflex2-one">
-                    <p className="commonp helloclass" onClick={()=>{
-                        navigate("/login")
-                    }}>Login</p>
+                    {
+                        localStorage.getItem("authToken")?
+                        <p className="commonp helloclass" onClick={()=>{
+                            navloghandler()
+                        }}>Logout</p>
+                        : <p className="commonp helloclass" onClick={()=>{
+                            navigate("/login")
+                        }}>Login</p>
+                    }
+                   
+                    
                 </div>
                 <div className="nflex2-two ">
                     <p className="commonp helloclass" onClick={()=>{

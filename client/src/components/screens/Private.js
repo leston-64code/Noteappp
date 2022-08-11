@@ -8,6 +8,7 @@ const Private = () => {
   const [notesarr, setNotesarr] = useState([]);
   const [track, setTrack] = useState(1);
   const [show, setShow] = useState(false);
+  const [show2, setShow2] = useState(false);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [tag, setTag] = useState("");
@@ -76,16 +77,21 @@ const Private = () => {
   }
 
   async function submitChecker() {
-    addnote(title, description, tag);
-
+    if(show===true){
+      addnote(title, description, tag);
     setShow(false);
     setTrack(track + 1);
+    }
+    if(show2===true){
+      console.log("this is setshow true")
+    }
   }
 
   async function  deleteALLNOTE(){
     deleteallnotes()
     setTrack(track+1)
   }
+
 
 
   return (
@@ -108,10 +114,14 @@ const Private = () => {
       }}>Delete all notes</button>
       <br />
       <br />
-      {show ? (
+      {show ||show2 ? (
         <div className="three-cc">
           <div className="title">
-            <p className="title-one">Add note</p>
+            {
+              show?<p className="title-one">Add note</p>
+              :<p className="title-one">Update note</p>
+            }
+            
           </div>
           <div className="email">
             <div className="flexer">
@@ -207,7 +217,13 @@ const Private = () => {
                   deleteNoteer(value._id);
                 }}
               ></i>
-              <i className="fa-solid fa-file-pen fonticon"></i>
+              <i className="fa-solid fa-file-pen fonticon" onClick={()=>{
+                if(show2===false){
+                  setShow2(true)
+                }else{
+                  setShow2(false)
+                }
+              }}></i>
             </div>
           );
         })}
