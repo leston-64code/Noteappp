@@ -83,3 +83,27 @@ exports.deleteallnotes=async ()=>{
         console.log(error)
     })
 }
+
+exports.updateNote=async (title,des,tag)=>{
+    const noteID=localStorage.getItem("noteID")
+    fetch("/api/notes/updatenote",{
+        method:"PUT",
+        headers:{
+            "Content-Type":"application/json",
+            "noteID":noteID
+        },
+        body:JSON.stringify({
+            title:title,
+            description:des,
+            tag:tag
+        })
+    }).then((res)=>{
+        return res.json()
+    }).then((data)=>{
+        localStorage.removeItem("noteID")
+        console.log(data)
+        
+    }).catch((error)=>{
+        console.log(error)
+    })
+}

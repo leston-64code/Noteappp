@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./css/card.css";
 import "./css/addnote.css";
-import { deleteNote, addnote ,deleteallnotes} from "../apis/api";
+import { deleteNote, addnote ,deleteallnotes,updateNote} from "../apis/api";
 
 const Private = () => {
   const [notesarr, setNotesarr] = useState([]);
@@ -78,12 +78,15 @@ const Private = () => {
 
   async function submitChecker() {
     if(show===true){
-      addnote(title, description, tag);
+    addnote(title, description, tag);
     setShow(false);
     setTrack(track + 1);
     }
     if(show2===true){
       console.log("this is setshow true")
+      updateNote(title,description,tag)
+      setShow2(false)
+      setTrack(track + 1);
     }
   }
 
@@ -101,6 +104,10 @@ const Private = () => {
         className="mymainbutton "
         onClick={() => {
           if (show === false) {
+            if(show2===true){
+              setShow2(false)
+              localStorage.removeItem("noteID")
+            }
             setShow(true);
           } else {
             setShow(false);
@@ -182,7 +189,7 @@ const Private = () => {
             <button
               className="submit-button"
               onClick={() => {
-                submitChecker();
+                 submitChecker();
               }}
             >
               Submit
@@ -219,9 +226,15 @@ const Private = () => {
               ></i>
               <i className="fa-solid fa-file-pen fonticon" onClick={()=>{
                 if(show2===false){
+                  localStorage.setItem("noteID",value._id)
+                  if(show===true){
+                    setShow(false)
+                  }
                   setShow2(true)
+                  
                 }else{
                   setShow2(false)
+                  localStorage.removeItem("noteID")
                 }
               }}></i>
             </div>
