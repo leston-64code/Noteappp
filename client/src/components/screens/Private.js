@@ -36,6 +36,7 @@ const Private = () => {
       .then((data) => {
         // console.log(data.newer);
         localStorage.setItem("userID", data.newer);
+        localStorage.setItem("username",data.username)
       })
       .catch((error) => {
         console.log(error);
@@ -242,14 +243,6 @@ const Private = () => {
         })}
       </div>
 
-      <button
-        onClick={() => {
-          logoutHandler();
-        }}
-        style={{ fontSize: "50px", borderRadius: "15px solid white" }}
-      >
-        Logout
-      </button>
     </div>
   );
 };

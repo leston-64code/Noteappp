@@ -112,10 +112,12 @@ exports.resetpassword =async (req, res, next) => {
 
 exports.getuser=async (req,res,next)=>{
   const id=req.userid
+  const username=req.username
   return res.json({
     success:"true",
     message:"I got the jwt data",
-    newer:id
+    newer:id,
+    username
   })
 }
 

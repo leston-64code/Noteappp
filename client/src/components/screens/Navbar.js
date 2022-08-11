@@ -7,6 +7,7 @@ const Navbar = () => {
     function navloghandler(){
         localStorage.removeItem("authToken")
         localStorage.removeItem("userID")
+        localStorage.removeItem("username")
         navigate("/login")
     }
   return (
@@ -50,7 +51,11 @@ const Navbar = () => {
                 </div>
                 <div className="nflex2-three">
                     <i className="fa-solid fa-user"></i>
-                    <p className="nflex2-three-p helloclass">Hello lesotn</p>
+                  {
+                    localStorage.getItem("authToken")?
+                    <p className="nflex2-three-p helloclass">{localStorage.getItem("username")}</p>
+                    :null
+                  }
                 </div>
             </div>
         </div>
