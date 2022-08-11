@@ -96,7 +96,7 @@ const Private = () => {
     setTrack(track+1)
   }
 
-
+let arr2=[...notesarr].reverse()
 
   return (
     <div>
@@ -211,7 +211,7 @@ const Private = () => {
           margin: "auto",
         }}
       >
-        {notesarr.reverse().map((value, index) => {
+        {arr2.map((value, index) => {
           return (
             <div className="ctwo" key={value._id}>
               <div className="three">
