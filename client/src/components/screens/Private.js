@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./css/card.css";
 import "./css/addnote.css";
-import { deleteNote, addnote } from "../apis/api";
+import { deleteNote, addnote ,deleteallnotes} from "../apis/api";
 
 const Private = () => {
   const [notesarr, setNotesarr] = useState([]);
@@ -82,6 +82,12 @@ const Private = () => {
     setTrack(track + 1);
   }
 
+  async function  deleteALLNOTE(){
+    deleteallnotes()
+    setTrack(track+1)
+  }
+
+
   return (
     <div>
       <h1 style={{ color: "red" }}>Welcome to your dashborard</h1>
@@ -97,7 +103,9 @@ const Private = () => {
       >
         Add Note
       </button>
-      <button className="mymainbutton danger">Delete all notes</button>
+      <button className="mymainbutton danger" onClick={()=>{
+        deleteALLNOTE()
+      }}>Delete all notes</button>
       <br />
       <br />
       {show ? (

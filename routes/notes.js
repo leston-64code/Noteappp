@@ -9,7 +9,7 @@ router.route("/addnote").post(addnote)
 router.route("/getallnotes").post(getallnotes)
 
 
-router.route("/deleteallnotes").post(deleteallnotes)
+router.route("/deleteallnotes").delete(deleteallnotes)
 
 
 router.route("/updatenote").put(updatenote)

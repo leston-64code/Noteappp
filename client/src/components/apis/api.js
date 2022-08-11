@@ -66,3 +66,20 @@ exports.addnote=async (title,des,tag)=>{
         console.log(error)
     })
 }
+
+exports.deleteallnotes=async ()=>{
+    const userID=localStorage.getItem("userID")
+    fetch("/api/notes/deleteallnotes",{
+        method:"DELETE",
+        headers:{
+            "Content-Type":"application/json",
+            "userID":userID
+        }
+    }).then((res)=>{
+        return res.text()
+    }).then((data)=>{
+        console.log(data)
+    }).catch((error)=>{
+        console.log(error)
+    })
+}
