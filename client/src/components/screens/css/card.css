@@ -24,6 +24,10 @@ body{
     margin:25px;
     flex-direction: column;
 }
+.ctwo:hover{
+    background-color:rgb(30, 137, 137) ;
+    color:white
+}
 .three{
     text-align: center;
 }
