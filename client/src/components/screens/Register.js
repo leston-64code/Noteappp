@@ -1,14 +1,23 @@
 import React, { useState, useEffect } from "react";
 import "./css/register.css";
 import { Link, useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-const Register = ({ history }) => {
+const Register = () => {
   let navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  // const [error, setError] = useState("");
+  
+  const toastoptions = {
+    position: "top-center",
+    autoClose: 5000,
+    pauseOnHover: true,
+    draggable: true,
+    theme: "dark",
+  };
 
   useEffect(() => {
     if (localStorage.getItem("authToken")) {
@@ -18,7 +27,14 @@ const Register = ({ history }) => {
 
   async function registerHandler(e) {
     e.preventDefault();
-
+    if(!username||!password||!email){
+       toast.error("Please add all fields",toastoptions)
+       return
+    }
+    if(password!==confirmPassword){
+       toast.error("Password and confirm password did not match",toastoptions)
+       return
+    }
        await fetch("/api/auth/register", {
       method: "POST",
       headers: {
@@ -38,12 +54,12 @@ const Register = ({ history }) => {
           localStorage.setItem("authToken", data.token);
           navigate("/private");
         } else {
-          console.log(data);
-        }
+          toast.error("Email already in use",toastoptions)
+                 }
       })
       .catch((error) => {
-        alert("Failed to send requrest");
-      });
+        toast.error("Failed to send request",toastoptions)
+          });
   }
 
   return (
@@ -64,6 +80,7 @@ const Register = ({ history }) => {
                   className="name-input input-control"
                   placeholder="Enter your name"
                   value={username}
+                  tabIndex={"1"}
                   onChange={(e) => {
                     setUsername(e.target.value);
                   }}
@@ -82,6 +99,7 @@ const Register = ({ history }) => {
                   className="email-input input-control"
                   placeholder="Enter your email"
                   value={email}
+                  tabIndex={"2"}
                   onChange={(e) => {
                     setEmail(e.target.value);
                   }}
@@ -142,6 +160,7 @@ const Register = ({ history }) => {
           </span>
         </div>
       </div>
+      <ToastContainer/>
     </div>
   );
 };

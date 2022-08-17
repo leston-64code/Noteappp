@@ -115,7 +115,7 @@ exports.deletenote=async(req,res,next)=>{
 exports.updatenote=async(req,res,next)=>{
     const {title,description,tag}=req.body
     try {
-        if(!title && !description){
+        if(!title || !description){
             return next(new ErrorResponse("Please enter title or description ",404))
         }
         if(title&&description){

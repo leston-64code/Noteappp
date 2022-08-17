@@ -2,7 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./css/card.css";
 import "./css/addnote.css";
-import { deleteNote, addnote ,deleteallnotes,updateNote} from "../apis/api";
+import { deleteNote, addnote, deleteallnotes, updateNote } from "../apis/api";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Private = () => {
   const [notesarr, setNotesarr] = useState([]);
@@ -22,6 +24,14 @@ const Private = () => {
 
   let data = localStorage.getItem("authToken");
 
+  const toastoptions = {
+    position: "top-center",
+    autoClose: 2000,
+    pauseOnHover: true,
+    draggable: true,
+    theme: "light",
+  };
+
   useEffect(() => {
     fetch("/api/auth/getuser", {
       method: "POST",
@@ -35,8 +45,9 @@ const Private = () => {
       })
       .then((data) => {
         // console.log(data.newer);
+        toast.success(data.message, toastoptions);
         localStorage.setItem("userID", data.newer);
-        localStorage.setItem("username",data.username)
+        localStorage.setItem("username", data.username);
       })
       .catch((error) => {
         console.log(error);
@@ -74,31 +85,40 @@ const Private = () => {
 
   function deleteNoteer(getid) {
     deleteNote(getid);
+    toast.success("Note deleted", toastoptions);
     setTrack(track + 1);
   }
 
   async function submitChecker() {
-    if(show===true){
-    addnote(title, description, tag);
-    setShow(false);
-    setTrack(track + 1);
+    if (show === true) {
+      if (!title || !description) {
+        toast.error("Please enter title or description", toastoptions);
+        return;
+      }
+      addnote(title, description, tag);
+      toast.success("Note added successfully", toastoptions);
+      setShow(false);
+      setTrack(track + 1);
     }
-    if(show2===true){
-      console.log("this is setshow true")
-      updateNote(title,description,tag)
-      setShow2(false)
+    if (show2 === true) {
+      if (!title || !description) {
+        toast.error("Please enter title or description", toastoptions);
+        return;
+      }
+      updateNote(title, description, tag);
+      toast.success("Note updated successfylly", toastoptions);
+      setShow2(false);
       setTrack(track + 1);
     }
   }
 
-  async function  deleteALLNOTE(){
-    deleteallnotes()
-    setTrack(track+1)
+  async function deleteALLNOTE() {
+    deleteallnotes();
+    toast.success("All notes deleted", toastoptions);
+    setTrack(track + 1);
   }
 
-let arr2=[...notesarr].reverse()
-// console.log(arr2[0].date.substring(0,10))
-// console.log(arr2[0].date.substring(11,19))
+  let arr2 = [...notesarr].reverse();
 
   return (
     <div>
@@ -107,9 +127,9 @@ let arr2=[...notesarr].reverse()
         className="mymainbutton "
         onClick={() => {
           if (show === false) {
-            if(show2===true){
-              setShow2(false)
-              localStorage.removeItem("noteID")
+            if (show2 === true) {
+              setShow2(false);
+              localStorage.removeItem("noteID");
             }
             setShow(true);
           } else {
@@ -119,19 +139,24 @@ let arr2=[...notesarr].reverse()
       >
         Add Note
       </button>
-      <button className="mymainbutton danger" onClick={()=>{
-        deleteALLNOTE()
-      }}>Delete all notes</button>
+      <button
+        className="mymainbutton danger"
+        onClick={() => {
+          deleteALLNOTE();
+        }}
+      >
+        Delete all notes
+      </button>
       <br />
       <br />
-      {show ||show2 ? (
+      {show || show2 ? (
         <div className="three-cc">
           <div className="title">
-            {
-              show?<p className="title-one">Add note</p>
-              :<p className="title-one">Update note</p>
-            }
-            
+            {show ? (
+              <p className="title-one">Add note</p>
+            ) : (
+              <p className="title-one">Update note</p>
+            )}
           </div>
           <div className="email">
             <div className="flexer">
@@ -192,7 +217,7 @@ let arr2=[...notesarr].reverse()
             <button
               className="submit-button"
               onClick={() => {
-                 submitChecker();
+                submitChecker();
               }}
             >
               Submit
@@ -221,31 +246,33 @@ let arr2=[...notesarr].reverse()
               </div>
               <p className=" p-one-ctwo">{value.description}</p>
               <br />
-              <p className="p-two-ctwo">{value.date.substring(0,10)}</p>
+              <p className="p-two-ctwo">{value.date.substring(0, 10)}</p>
               <i
                 className="fa-solid fa-trash-can fonticon danger "
                 onClick={() => {
                   deleteNoteer(value._id);
                 }}
               ></i>
-              <i className="fa-solid fa-file-pen fonticon" onClick={()=>{
-                if(show2===false){
-                  localStorage.setItem("noteID",value._id)
-                  if(show===true){
-                    setShow(false)
+              <i
+                className="fa-solid fa-file-pen fonticon"
+                onClick={() => {
+                  if (show2 === false) {
+                    localStorage.setItem("noteID", value._id);
+                    if (show === true) {
+                      setShow(false);
+                    }
+                    setShow2(true);
+                  } else {
+                    setShow2(false);
+                    localStorage.removeItem("noteID");
                   }
-                  setShow2(true)
-                  
-                }else{
-                  setShow2(false)
-                  localStorage.removeItem("noteID")
-                }
-              }}></i>
+                }}
+              ></i>
             </div>
           );
         })}
       </div>
-
+      <ToastContainer />
     </div>
   );
 };

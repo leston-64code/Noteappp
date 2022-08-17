@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./css/login.css";
 import { Link, useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -13,8 +15,20 @@ const Login = () => {
     }
   }, [navigate]);
 
+  const toastoptions = {
+    position: "top-center",
+    autoClose: 1000,
+    pauseOnHover: true,
+    draggable: true,
+    theme: "dark",
+  };
+
   async function loginHandler(e) {
     e.preventDefault();
+    if(!email||!password){
+      toast.error("Please enter valid email or password",toastoptions)
+      return
+    }
 
     await fetch("/api/auth/login", {
       method: "POST",
@@ -27,22 +41,22 @@ const Login = () => {
       }),
     })
       .then((res) => {
-        return res.json();
+           return res.json()
       })
       .then((data) => {
-        // console.log(data);
+      
         if (data.success === true) {
           localStorage.setItem("authToken", data.token);
           navigate("/private");
         } else {
           setError(true)
-          // alert(data.error)
-          console.log(data)
-          navigate("/login");
+          toast.error(data.error, toastoptions);
+       navigate("/login");
         }
       })
       .catch((error) => {
-        alert("Request sending failed");
+        return toast.error("Request sending failed",toastoptions)
+   
       });
   }
 
@@ -109,6 +123,7 @@ const Login = () => {
           }
         </div>
       </div>
+      <ToastContainer/>
     </div>
   );
 };

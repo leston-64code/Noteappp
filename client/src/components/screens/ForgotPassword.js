@@ -1,11 +1,25 @@
 import React, { useState} from "react";
 import "./css/login.css";
 import { Link} from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
   const [email, setEmail] = useState("");
  
+  const toastoptions = {
+    position: "top-center",
+    autoClose: 5000,
+    pauseOnHover: true,
+    draggable: true,
+    theme: "dark",
+  };
+
     async function forgotHandler(){
+      if(!email){
+        toast.error("Please enter valid email",toastoptions)
+        return
+      }
        fetch("/api/auth/forgotpassword",{
         method:"POST",
         headers:{
@@ -17,8 +31,11 @@ const Login = () => {
        }).then((res)=>{
          return res.json()
        }).then((data)=>{
-        console.log(data)
+        // console.log(data)
+        toast.success("Password reset email sent successfully",toastoptions)
        
+       }).catch((error)=>{
+        console.log(error)
        })
 
     }
@@ -66,6 +83,7 @@ const Login = () => {
           </span>
         </div>
       </div>
+      <ToastContainer/>
     </div>
   );
 };

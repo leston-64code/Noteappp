@@ -27,19 +27,18 @@ exports.login = async (req, res, next) => {
     const user = await User.findOne({ email }).select("+password");
 
     if (!user) {
-      return next(new ErrorResponse("Invalid credentials hello", 404));
+      return next(new ErrorResponse("Invalid credentials", 404));
     }
 
     const isMatch = await user.matchPasswords(password);
 
     if (!isMatch) {
-      return next(new ErrorResponse("Invalid credentials super", 404));
+      return next(new ErrorResponse("Invalid credentials", 404));
     }
 
     sendToken(user, 200, res);
   } catch (error) {
-    // return next(new ErrorResponse("Server Error", 500));
-    return next(error);
+        return next(error);
   }
 };
 
@@ -61,7 +60,8 @@ exports.forgotpassword = async (req, res, next) => {
     const message = `
         <h1>You have requested a password reset</h1>
         <p>Please go to the link to reset your password</p>
-        <a href=${resetToken} clicktracking=off>${resetURL}</a>
+       
+        <a href=${resetURL} clicktracking=off><button style="background-color: cornflowerblue;padding: 15px;border-radius: 9px;width: 150px;font-size: large;color:black;margin: auto;">Reset Password</button></a>
         `;
 
     try {
@@ -115,7 +115,7 @@ exports.getuser=async (req,res,next)=>{
   const username=req.username
   return res.json({
     success:"true",
-    message:"I got the jwt data",
+    message:"Logged in successfully",
     newer:id,
     username
   })
@@ -127,5 +127,6 @@ const sendToken = async (user, statusCode, res) => {
   res.status(statusCode).json({
     success: true,
     token,
+    message:"You logged in successfylly"
   });
 };

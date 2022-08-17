@@ -1,17 +1,30 @@
 import React, { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ResetPassword = () => {
     const [password,setPassword]=useState("")
     const [confirmpassword,setConfirmPassword]=useState("")
     const token=useParams()
     const navigate=useNavigate()
-//   console.log(token)
+    const toastoptions = {
+        position: "top-center",
+        autoClose: 1000,
+        pauseOnHover: true,
+        draggable: true,
+        theme: "dark",
+      };
+    
     function resetpassHandler(e){
         e.preventDefault()
-        
+        if(!password||!confirmpassword){
+            toast.error("Please enter password or confirm password",toastoptions)
+            return
+        }
         if(password!==confirmpassword){
-        return console.log("Confirm password and password did not match")
+            toast.error("Password and ConfirmPassword did not match",toastoptions)
+            return
         }else{
             // fetch(`/api/auth/passwordreset/${match.params.resetToken}`,{
             fetch(`/api/auth/resetpassword/${token.resetToken}`,{
@@ -24,14 +37,22 @@ const ResetPassword = () => {
                     password
                 })
             }).then((res)=>{
-                return res.text()
+                return res.json()
             }).then((data)=>{
-                console.log(data)
+                // console.log(data)
                 if(data.success===true){
+                    toast.success("Password reset successful",toastoptions)
                     navigate("/login")
                 }
+            
+                if(data.success===false){
+                    console.log(data.error)
+                    toast.error(data.error,toastoptions)
+                }
+             
             }).catch((error)=>{
                 console.log(error)
+                // toast.error(error)
             })
         }
     }
@@ -86,6 +107,7 @@ const ResetPassword = () => {
             {/* <span style={{color:"white"}}>Don't have an account ?  <Link className='linkerman' to="/register"> Register</Link></span> */}
         </div>
     </div>
+    <ToastContainer/>
 </div>
 
   )
