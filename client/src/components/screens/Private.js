@@ -97,6 +97,8 @@ const Private = () => {
   }
 
 let arr2=[...notesarr].reverse()
+// console.log(arr2[0].date.substring(0,10))
+// console.log(arr2[0].date.substring(11,19))
 
   return (
     <div>
@@ -218,7 +220,8 @@ let arr2=[...notesarr].reverse()
                 <p className="ctwo-card-header">{value.title}</p>
               </div>
               <p className=" p-one-ctwo">{value.description}</p>
-              <p className="p-two-ctwo">{value.date}</p>
+              <br />
+              <p className="p-two-ctwo">{value.date.substring(0,10)}</p>
               <i
                 className="fa-solid fa-trash-can fonticon danger "
                 onClick={() => {

@@ -116,10 +116,13 @@ body{
 }
 
 @media (max-width:600px){
-    .one-c{
+    /* .one-c{
         width: 100vw;
     }
     .two-c{
         width: 80%;
+    } */
+    .three-cc{
+        width: 90%;
     }
 }
