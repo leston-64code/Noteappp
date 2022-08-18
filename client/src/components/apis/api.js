@@ -1,4 +1,4 @@
-exports.deleteNote=(getid)=>{
+export async function deleteNote(getid){
     const noteID=getid
     let leston
     fetch("/api/notes/deletenote",{
@@ -21,7 +21,7 @@ exports.deleteNote=(getid)=>{
     
 }
 
-exports.getallnotes=(req,res,next)=>{
+export function getallnotes(req,res,next){
     // const userID=userID
     setTimeout(() => {
         const userID = localStorage.getItem("userID");
@@ -49,7 +49,7 @@ exports.getallnotes=(req,res,next)=>{
       }, 1000);
 }
 
-exports.addnote=async (title,des,tag)=>{
+export async function addnote(title,des,tag){
     const userID=localStorage.getItem("userID")
     console.log(title,des,tag)
       await fetch("/api/notes/addnote",{
@@ -73,7 +73,7 @@ exports.addnote=async (title,des,tag)=>{
    
 }
 
-exports.deleteallnotes=async ()=>{
+export async function deleteallnotes(){
     const userID=localStorage.getItem("userID")
     fetch("/api/notes/deleteallnotes",{
         method:"DELETE",
@@ -90,7 +90,7 @@ exports.deleteallnotes=async ()=>{
     })
 }
 
-exports.updateNote=async (title,des,tag)=>{
+export async function updateNote(title,des,tag){
     const noteID=localStorage.getItem("noteID")
     let leston
     fetch("/api/notes/updatenote",{
