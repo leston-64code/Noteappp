@@ -15,6 +15,8 @@ const Login = () => {
     }
   }, [navigate]);
 
+let backlink="https://noteapp-leston.herokuapp.com"
+
   const toastoptions = {
     position: "top-center",
     autoClose: 1000,
@@ -30,7 +32,8 @@ const Login = () => {
       return
     }
 
-    await fetch("/api/auth/login", {
+
+    await fetch(`${backlink}/api/auth/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

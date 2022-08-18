@@ -32,8 +32,10 @@ const Private = () => {
     theme: "light",
   };
 
+  let backlink="https://noteapp-leston.herokuapp.com"
+
   useEffect(() => {
-    fetch("/api/auth/getuser", {
+    fetch(`${backlink}/api/auth/getuser`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -58,7 +60,7 @@ const Private = () => {
     setTimeout(() => {
       const userID = localStorage.getItem("userID");
 
-      fetch("/api/notes/getallnotes", {
+      fetch(`${backlink}/api/notes/getallnotes`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
