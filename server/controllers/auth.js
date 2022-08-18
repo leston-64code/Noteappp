@@ -67,7 +67,7 @@ exports.forgotpassword = async (req, res, next) => {
     try {
       sendEmail({
         to: user.email,
-        subject: "password reset Token",
+        subject: "Password Reset Token",
         html: message,
       });
 
