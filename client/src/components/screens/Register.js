@@ -11,6 +11,8 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   
+  let backlink="https://noteapp-leston.herokuapp.com"
+
   const toastoptions = {
     position: "top-center",
     autoClose: 5000,
@@ -35,7 +37,7 @@ const Register = () => {
        toast.error("Password and confirm password did not match",toastoptions)
        return
     }
-       await fetch("/api/auth/register", {
+       await fetch(`${backlink}/api/auth/register`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

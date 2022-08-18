@@ -1,7 +1,10 @@
+
+let backlink="https://noteapp-leston.herokuapp.com"
+
 export async function deleteNote(getid){
     const noteID=getid
     let leston
-    fetch("/api/notes/deletenote",{
+    fetch(`${backlink}/api/notes/deletenote`,{
         method:"DELETE",
         headers:{
             "Content-Type":"application/json",
@@ -26,7 +29,7 @@ export function getallnotes(req,res,next){
     setTimeout(() => {
         const userID = localStorage.getItem("userID");
         console.log("my poas", userID);
-        fetch("/api/notes/getallnotes", {
+        fetch(`${backlink}/api/notes/getallnotes`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -52,7 +55,7 @@ export function getallnotes(req,res,next){
 export async function addnote(title,des,tag){
     const userID=localStorage.getItem("userID")
     console.log(title,des,tag)
-      await fetch("/api/notes/addnote",{
+      await fetch(`${backlink}/api/notes/addnote`,{
         method:"POST",
         headers:{
             "Content-Type":"application/json",
@@ -75,7 +78,7 @@ export async function addnote(title,des,tag){
 
 export async function deleteallnotes(){
     const userID=localStorage.getItem("userID")
-    fetch("/api/notes/deleteallnotes",{
+    fetch(`${backlink}/api/notes/deleteallnotes`,{
         method:"DELETE",
         headers:{
             "Content-Type":"application/json",
@@ -93,7 +96,7 @@ export async function deleteallnotes(){
 export async function updateNote(title,des,tag){
     const noteID=localStorage.getItem("noteID")
     let leston
-    fetch("/api/notes/updatenote",{
+    fetch(`${backlink}/api/notes/updatenote`,{
         method:"PUT",
         headers:{
             "Content-Type":"application/json",

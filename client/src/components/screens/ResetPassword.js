@@ -15,6 +15,9 @@ const ResetPassword = () => {
         draggable: true,
         theme: "dark",
       };
+
+      let backlink="https://noteapp-leston.herokuapp.com"
+
     
     function resetpassHandler(e){
         e.preventDefault()
@@ -27,7 +30,7 @@ const ResetPassword = () => {
             return
         }else{
             // fetch(`/api/auth/passwordreset/${match.params.resetToken}`,{
-            fetch(`/api/auth/resetpassword/${token.resetToken}`,{
+            fetch(`${backlink}/api/auth/resetpassword/${token.resetToken}`,{
                 method:"PUT",
                 headers:{
                     "Content-Type":"application/json",
@@ -42,7 +45,7 @@ const ResetPassword = () => {
                 // console.log(data)
                 if(data.success===true){
                     toast.success("Password reset successful",toastoptions)
-                    navigate("/login")
+                    navigate("https://noteapp-leston-64code.netlify.app/")
                 }
             
                 if(data.success===false){

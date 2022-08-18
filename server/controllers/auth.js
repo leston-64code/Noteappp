@@ -55,7 +55,7 @@ exports.forgotpassword = async (req, res, next) => {
     
     await user.save();
 
-    const resetURL = `http://localhost:3000/resetpassword/${resetToken}`;
+    const resetURL = `https://noteapp-leston-64code.netlify.app/resetpassword/${resetToken}`;
 
     const message = `
         <h1>You have requested a password reset</h1>
