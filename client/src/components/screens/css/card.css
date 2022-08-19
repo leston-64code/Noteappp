@@ -15,7 +15,7 @@ body{
 
 .ctwo{
     /* border: 2px solid white; */
-    display: inline-block;
+    /* display: inline-block; */
     background-color:rgb(30, 137, 137) ;
     /* background-color:white; */
     color: white;
@@ -34,7 +34,7 @@ body{
     text-align: center;
 }
 .ctwo-card-header{
-    display: inline-block;
+    /* display: inline-block; */
     margin: 0;
     font-size:26px;
     font-family: 'Gantari', sans-serif;
@@ -43,7 +43,7 @@ body{
 }
 
 .p-one-ctwo{
-    display: inline-block;
+    /* display: inline-block; */
     margin-top: 0%;
     font-family: 'Gantari', sans-serif;
     text-align: center;
@@ -60,7 +60,7 @@ body{
 .fonticon{
     /* border: 1px solid red; */
     border-radius: 37px;
-    display: inline-block;
+    /* display: inline-block; */
     font-size: 22px;
     padding:2%;
     margin:0;
