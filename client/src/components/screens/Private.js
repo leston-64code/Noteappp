@@ -32,7 +32,7 @@ const Private = () => {
     theme: "light",
   };
 
-  let backlink="https://noteapp-leston.herokuapp.com"
+  let backlink = "https://noteapp-leston.herokuapp.com";
 
   useEffect(() => {
     fetch(`${backlink}/api/auth/getuser`, {
@@ -119,6 +119,15 @@ const Private = () => {
     toast.success("All notes deleted", toastoptions);
     setTrack(track + 1);
   }
+
+  let convertTime = (time) => {
+    return new Date(time).toLocaleDateString("en-us", {
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+      weekday: "short",
+    });
+  };
 
   let arr2 = [...notesarr].reverse();
 
@@ -248,7 +257,7 @@ const Private = () => {
               </div>
               <p className=" p-one-ctwo">{value.description}</p>
               <br />
-              <p className="p-two-ctwo">{value.date.substring(0, 10)}</p>
+              <p className="p-two-ctwo">{convertTime(value.date)}</p>
               <i
                 className="fa-solid fa-trash-can fonticon danger "
                 onClick={() => {
