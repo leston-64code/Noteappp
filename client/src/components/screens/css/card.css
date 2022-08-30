@@ -22,7 +22,7 @@ body{
     width: 23%;
     padding:0.7%;
     border-radius: 11px;
-    height: auto;
+    height: 100%;
     margin:25px;
     flex-direction: column;
 }
