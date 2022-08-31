@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react'
-import {Link ,useNavigate} from "react-router-dom"
+import React from 'react'
+import {Link} from "react-router-dom"
 import "./css/home.css"
 const Home = () => {
   // let navigate=useNavigate()
@@ -10,12 +10,19 @@ const Home = () => {
   // },[navigate])
   return (
     <div className='home-one' >
-           <h1 style={{color:"white"}}>Choose your choice</h1>
-      <Link style={{"fontSize":"50px","textDecoration":"none",color:"red"}} to="/register">Register</Link>
-      <br />
-      <br />
-      <Link style={{"fontSize":"50px","textDecoration":"none",color:"red"}}  to="/login">Login</Link>
-    </div>
+      <div className="hmain">
+        <div className="hone">
+          <h1>Urnotes</h1>
+          <h3>All your notes at one place !! . Sign up quickly for using this utility . </h3>
+          <div className="hbuttons">
+            <div className="hbutone hbtn"><Link className='linker' to="/login">Login</Link></div>
+            <div className="hbutone hbtn"><Link className='linker' to="/register">Sign up</Link></div>
+          </div>
+        </div>
+        
+      </div>
+      <div className="hdummy"></div>
+       </div>
   )
 }
 

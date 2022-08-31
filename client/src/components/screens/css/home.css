@@ -1,3 +1,152 @@
-/* .home-one{
-    background:image("https://images.pexels.com/photos/3363098/pexels-photo-3363098.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1")
+.hdummy{
+    width: 100%;
+    height: 100vh;
+    background-color: rgb(30, 137, 137); 
+    clip-path: polygon(100% 63%, 0% 100%, 100% 100%);
+    margin: 0;
+    
+}
+.hone h1{
+    color: white;
+    font-size: 100px;
+    margin: 0;
+    margin-top: 15px;
+    animation: heading-anim 3s , color-changer-head 2s infinite ease-in-out;
+    /* animation-duration: 3s; */
+    /* transition-property: color;
+    transition-duration: 2s; */
+    /* animation-name: color-changer-head ; */
+    /* animation-duration: 2s; */
+    animation-iteration-count:0 infinite;
+}
+/* .hone h1:hover{
+    color:rgb(126, 183, 183); 
 } */
+
+@keyframes heading-anim {
+    from{
+        font-size: 25px;       
+    }
+    to{
+        font-size: 100px;      
+    }   
+}
+@keyframes color-changer-head {
+    from{
+        color: white;
+    }
+    to{
+        color:rgb(123, 162, 246); 
+    }
+}
+.hone h3{
+    color: white;
+    font-size: 25px;
+    animation-name: h3-display;
+    animation-duration: 3s;
+    margin-top: 44px;
+  }
+  @keyframes h3-display {
+    from{
+        font-size: 0px;
+    }to{
+        font-size:25px;
+    }
+  }
+
+.hbtn{
+    display: inline-block;
+    background-color: white;
+    margin: 0;
+    margin-left: 15px;
+    width: 140px;
+    font-size: 20px;
+    padding: 11px;
+    border-radius: 10px;
+    transition-property: background-color;
+    transition-duration: 1s;
+     animation-duration: 3s;
+    animation-name: width-controller,h3-display;
+}
+@keyframes width-controller {
+    from{
+        width: 0px;
+    }
+    to{
+        width: 140px;
+    }
+}
+
+
+.hbtn:hover{
+    background-color: rgb(30, 137, 137); 
+    color: white;
+}
+
+.linker{
+    text-decoration: none;
+    color:black
+}
+.linker:hover{
+    color: white;
+}
+
+@media (max-width:600px) {
+    .hone h1{
+        font-size: 50px;
+        animation: h1-heading 3s,color-changer-phone 8s infinite ease-out;
+    }
+    @keyframes h1-heading {
+        from{
+            font-size: 10px;
+        }
+        to{
+            font-size: 50px;
+        }
+    }
+    @keyframes color-changer-phone {
+        from{
+      color: white;
+  }
+  to{
+    color: rgb(130, 206, 206); 
+  }
+}
+    .hone  h3{
+        margin-top: 35px;
+        font-size: 16px;
+        animation-name: h3-display-phone ;
+        /* animation-duration: 3s; */
+    }
+    @keyframes h3-display-phone {
+        from{
+            font-size:0px;
+        }
+        to{
+            font-size:16px;
+        }
+    }
+    
+    }
+    .hbtn{
+        margin-top: 35px;
+        width: 80px ;
+        font-size: 15px;
+        animation-duration: 3s;
+        animation-name: width-controller-phone,h3-display-phone;
+        
+    }
+    @keyframes width-controller-phone {
+        from{
+            width: 0px;
+        }to{
+            width: 80px;
+        }
+    }
+    .hdummy{
+        height: 48vh;
+    }
+    .linker:hover{
+        color: white;
+    }
+   

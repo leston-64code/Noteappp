@@ -33,6 +33,7 @@ const Private = () => {
   };
 
   let backlink = "https://noteapp-leston.herokuapp.com";
+  // let backlink = "http://localhost:3001";
 
   useEffect(() => {
     fetch(`${backlink}/api/auth/getuser`, {
@@ -133,7 +134,7 @@ const Private = () => {
 
   return (
     <div>
-      <h1 style={{ color: "red" }}>Welcome to your dashborard</h1>
+      <h1 style={{ color: "red" }} className="main-dash">Welcome to your dashborard</h1>
       <button
         className="mymainbutton "
         onClick={() => {
@@ -156,7 +157,7 @@ const Private = () => {
           deleteALLNOTE();
         }}
       >
-        Delete all notes
+        Delete all
       </button>
       <br />
       <br />

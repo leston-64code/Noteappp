@@ -50,7 +50,7 @@ const Navbar = () => {
                     }}>Register</p>
                 </div>
                 <div className="nflex2-three">
-                    <i className="fa-solid fa-user"></i>
+                    <i className="fa-solid fa-user"></i><br />
                   {
                     localStorage.getItem("authToken")?
                     <p className="nflex2-three-p helloclass">{localStorage.getItem("username")}</p>
