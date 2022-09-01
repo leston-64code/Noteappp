@@ -1,7 +1,7 @@
 .hdummy{
     width: 100%;
     height: 100vh;
-    background-color: rgb(30, 137, 137); 
+    background-color: rgb(104 133 240);
     clip-path: polygon(100% 63%, 0% 100%, 100% 100%);
     margin: 0;
     
@@ -12,16 +12,8 @@
     margin: 0;
     margin-top: 15px;
     animation: heading-anim 3s , color-changer-head 2s infinite ease-in-out;
-    /* animation-duration: 3s; */
-    /* transition-property: color;
-    transition-duration: 2s; */
-    /* animation-name: color-changer-head ; */
-    /* animation-duration: 2s; */
-    animation-iteration-count:0 infinite;
+     animation-iteration-count:0 infinite;
 }
-/* .hone h1:hover{
-    color:rgb(126, 183, 183); 
-} */
 
 @keyframes heading-anim {
     from{
@@ -60,26 +52,26 @@
     margin: 0;
     margin-left: 15px;
     width: 140px;
-    font-size: 20px;
+    font-size: px;
     padding: 11px;
     border-radius: 10px;
     transition-property: background-color;
     transition-duration: 1s;
-     animation-duration: 3s;
-    animation-name: width-controller,h3-display;
+    animation:font-control-one 3s;
 }
-@keyframes width-controller {
+
+@keyframes font-control-one{
     from{
-        width: 0px;
+        font-size: 0px;
     }
     to{
-        width: 140px;
+        font-size: 20px;
     }
 }
 
 
 .hbtn:hover{
-    background-color: rgb(30, 137, 137); 
+    background-color: rgb(104 133 240); 
     color: white;
 }
 
