@@ -124,7 +124,13 @@ exports.getuser=async (req,res,next)=>{
 
 const sendToken = async (user, statusCode, res) => {
   const token = user.getSignedToken();
-  res.status(statusCode).cookie("token",token).json({
+  res.cookie("token", token, {
+    expires: new Date(Date.now() + 1 * 24 * 60 * 60 * 1000),
+    httpOnly: true,
+    sameSite: "None",
+    secure: true,
+  });
+  return res.status(statusCode).json({
     success: true,
     token,
     message:"You logged in successfylly"

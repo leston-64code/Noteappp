@@ -13,7 +13,8 @@ const app=express()
 //     origin:"https://noteapp-leston-64code.netlify.app"
 // }))
 app.use(cors({
-    origin:"http://localhost:3000"
+    origin:"http://localhost:3000",
+    credentials:true
 }))
 app.use(express.json())
 

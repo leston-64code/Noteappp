@@ -3,6 +3,7 @@ import "./css/login.css";
 import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import axios from "axios"
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -40,6 +41,7 @@ let backlink = "http://localhost:3001";
         "Content-Type": "application/json",
         
       },
+       credentials:"include",
       body: JSON.stringify({
         email,
         password,
@@ -63,6 +65,8 @@ let backlink = "http://localhost:3001";
         return toast.error("Request sending failed",toastoptions)
    
       });
+      
+
   }
 
   return (
