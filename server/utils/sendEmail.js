@@ -45,7 +45,7 @@ const sendEmail = (options) => {
   var transporter = nodemailer.createTransport({
     host: "mail.gmx.com",
     port: 587,
-    // port: 465,
+    
     tls: {
       ciphers: "SSLv3",
       rejectUnauthorized: false,

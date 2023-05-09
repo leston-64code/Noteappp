@@ -138,7 +138,6 @@ exports.updatenote=async(req,res,next)=>{
        return next(error)
     }
 }
-
 exports.updateAllNotes=async (req,res, next)=>{
     try {
 

@@ -124,7 +124,7 @@ exports.getuser=async (req,res,next)=>{
 
 const sendToken = async (user, statusCode, res) => {
   const token = user.getSignedToken();
-  res.status(statusCode).json({
+  res.status(statusCode).cookie("token",token).json({
     success: true,
     token,
     message:"You logged in successfylly"

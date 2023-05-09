@@ -32,8 +32,8 @@ const Private = () => {
     theme: "light",
   };
 
-  let backlink = "https://noteapp-leston.herokuapp.com";
-  // let backlink = "http://localhost:3001";
+  // let backlink = "https://noteapp-leston.herokuapp.com";
+  let backlink = "http://localhost:3001";
 
   useEffect(() => {
     fetch(`${backlink}/api/auth/getuser`, {
