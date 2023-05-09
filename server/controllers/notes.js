@@ -138,3 +138,17 @@ exports.updatenote=async(req,res,next)=>{
        return next(error)
     }
 }
+
+exports.updateAllNotes=async (req,res, next)=>{
+    try {
+
+        const allupdatenote=await Notes.updateMany({},{$set:{numOfReviews:0, reviews:[]}})
+        return res.status(200).json({
+            "success":true,
+            allupdatenote
+        })
+
+    } catch (error) {
+        return next(new ErrorResponse(error,error.status))
+    }
+}
