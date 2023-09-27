@@ -26,14 +26,14 @@ const Private = () => {
 
   const toastoptions = {
     position: "top-center",
-    autoClose: 2000,
+    autoClose: 1000,
     pauseOnHover: true,
     draggable: true,
     theme: "light",
   };
 
   // let backlink = "https://noteapp-leston.herokuapp.com";
-  let backlink = "http://localhost:3001";
+  let backlink=`${process.env.REACT_APP_BASE_URL}`
 
   useEffect(() => {
     fetch(`${backlink}/api/auth/getuser`, {

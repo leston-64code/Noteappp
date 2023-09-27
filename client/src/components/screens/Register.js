@@ -11,11 +11,12 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   
-  let backlink="https://noteapp-leston.herokuapp.com"
+  // let backlink="https://noteapp-leston.herokuapp.com"
+  let backlink=`${process.env.REACT_APP_BASE_URL}`
 
   const toastoptions = {
     position: "top-center",
-    autoClose: 5000,
+    autoClose: 1000,
     pauseOnHover: true,
     draggable: true,
     theme: "dark",
@@ -56,6 +57,7 @@ const Register = () => {
           localStorage.setItem("authToken", data.token);
           navigate("/private");
         } else {
+          console.log(data)
           toast.error("Email already in use",toastoptions)
                  }
       })

@@ -16,7 +16,7 @@ const ResetPassword = () => {
         theme: "dark",
       };
 
-      let backlink="https://noteapp-leston.herokuapp.com"
+      let backlink=`${process.env.REACT_APP_BASE_URL}`
 
     
     function resetpassHandler(e){

@@ -9,18 +9,20 @@ const Login = () => {
  
   const toastoptions = {
     position: "top-center",
-    autoClose: 5000,
+    autoClose: 1000,
     pauseOnHover: true,
     draggable: true,
     theme: "dark",
   };
+
+  let backlink=`${process.env.REACT_APP_BASE_URL}`
 
     async function forgotHandler(){
       if(!email){
         toast.error("Please enter valid email",toastoptions)
         return
       }
-       fetch("/api/auth/forgotpassword",{
+       fetch(`${backlink}/api/auth/forgotpassword`,{
         method:"POST",
         headers:{
           "Content-Type":"application/json"

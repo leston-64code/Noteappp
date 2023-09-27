@@ -1,6 +1,6 @@
 
 // let backlink="https://noteapp-leston.herokuapp.com"
-let backlink="http://localhost:3001"
+let backlink=`${process.env.REACT_APP_BASE_URL}`
 
 export async function deleteNote(getid){
     const noteID=getid
@@ -112,7 +112,7 @@ export async function updateNote(title,des,tag){
         return res.json()
     }).then((data)=>{
         localStorage.removeItem("noteID")
-        console.log(data)
+        // console.log(data)
         leston="Note updated successfully"
         
     }).catch((error)=>{
