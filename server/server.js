@@ -41,3 +41,5 @@ process.on("unhandledRejection",(err,promise)=>{
         process.exit(1)
     })
 })
+
+// mongodb://localhost:27017/noteapp-authentication
